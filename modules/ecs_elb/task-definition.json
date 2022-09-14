@@ -1,0 +1,67 @@
+[
+  { 
+     "essential": true,
+     "image": "AWSAccountNumber.dkr.ecr.us-east-1.amazonaws.com/path",
+     "environment": [
+      {
+        "name": "AWS_DEFAULT_REGION",
+        "value": "us-east-1"
+      }
+    ],
+     "secrets"          : [
+       {
+         "valueFrom": "SSMPATH",
+         "name": "TSS_API_BIND"
+       },
+       {
+         "valueFrom": "SSMPATH",
+         "name": "DKG_API_BIND"
+       },
+       {
+         "valueFrom": "SSMPATH",
+         "name": "DYNAMODB_TABLE"
+       },
+       {
+         "valueFrom": "SSMPATH",
+         "name": "AWS_REGION"
+       },
+       {
+         "valueFrom": "SSMPATH",
+         "name": "AWS_ACCESS_KEY_ID"
+       },
+       {
+         "valueFrom": "SSMPATH",
+         "name": "AWS_SECRET_ACCESS_KEY"
+       }
+       ],
+     "name": "name",
+     "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": [],
+        "options": {
+          "awslogs-group": "",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "copilot"
+        }
+      },
+     "portMappings": [ 
+        { 
+           "containerPort": 3000,
+           "hostPort": 3000,
+           "protocol": "tcp"
+        }
+        
+     ],
+     "executionRoleArn": "arn:aws:iam:.........",
+     "taskRoleArn": "arn:aws:iam:...............",
+     "family": "",
+     "networkMode": "awsvpc",
+
+     "requiresCompatibilities": [ 
+        "FARGATE" 
+     ]
+  }
+
+
+  
+]
